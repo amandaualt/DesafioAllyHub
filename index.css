@@ -1,0 +1,64 @@
+.bodyPag {
+  background-image: url("img/logo.svg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  /* height: 557px; */
+
+  background-color: #f2eff4;
+}
+.titulo {
+  padding-top: 8%;
+}
+.pesquisa {
+  height: 40px;
+  align-items: center;
+}
+.dataFim {
+  padding-right: 225px;
+}
+
+.headerPag {
+  width: 100%;
+  height: 80px;
+  background-color: #dddbed;
+}
+
+.headerImg {
+  height: 60px;
+  margin-top: 10px;
+  float: left;
+}
+.btn {
+  background-color: #b9b5e1;
+  color: #474a51;
+  font-weight: 600;
+  border-color: #474a51;
+  float: right;
+}
+
+.btn:hover {
+  background-color: #474a51;
+  color: #b9b5e1;
+  font-weight: 600;
+  border-color: #b9b5e1;
+}
+
+.formCadastroCurso {
+  justify-content: center;
+}
+.table {
+  margin-top: 8%;
+}
+
+@media only screen and (min-width: 1081px) {
+  .bodyPag {
+    height: 868px;
+  }
+}
+
+@media only screen and (max-width: 1081px) {
+  .bodyPag {
+    height: 868px;
+  }
+}
