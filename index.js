@@ -23,13 +23,19 @@ $(function () {
   });
 });
 
-$("form").submit(function () {
-  $(this)[0].reset();
-});
+// $("form").submit(function () {
+//   $(this)[0].reset();
+// })
 
 itemsTable();
 
 function carregaCursos(){
+
+  let cursoString = localStorage.getItem("curso");
+  let cursoObj = JSON.parse(cursoString || []);
+  itemsTable(cursoObj);
+  console.log(cursoObj);
+  console.log(localStorage);
 
 }
 
@@ -37,13 +43,9 @@ function cadastrarCurso() {
   let curso = dadosCurso();
 
   localStorage.setItem("curso", JSON.stringify(curso));
-  let cursoString = localStorage.getItem("curso", curso);
-  let cursoObj = JSON.parse(cursoString);
-  console.log(cursoObj);
-  console.log(localStorage);
-  
 
-  return cursoObj;
+  itemsTable(cursoObj)
+  
 }
 
 function dadosCurso() {
@@ -62,7 +64,6 @@ function dadosCurso() {
   };
 
   return dados;
-  // let curso = dados;
 }
 
 function itemsTable(value) {
