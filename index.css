@@ -39,9 +39,9 @@
   justify-content: center;
 }
 
-@media only screen and (max-width: 350px) {
+@media only screen and (min-width: 600px) {
   .dataFim {
-    margin-right: 164px;
+    margin-right: 210px;
   }
   .headerImg {
     height: 400px;
@@ -51,16 +51,15 @@
 }
 
 
+@media only screen and (max-width: 2080px) {
+ .dataFim {
+  margin-right: 160px;
+}
 
-@media only screen and (min-width: 1080px) {
-  .dataFim {
-    margin-right: 210px;
-  }
-
-  .headerImg {
-    height: 58px;
-    margin-top: 10px;
-    float: left;
-    left: 40%;
-  }
+.headerImg {
+  height: 58px;
+  margin-top: 10px;
+  float: left;
+  left: 40%;
+}
 }
