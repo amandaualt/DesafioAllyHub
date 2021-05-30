@@ -3,16 +3,14 @@
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
-  /* height: 557px; */
+  height: 868px;
 
   background-color: #f2eff4;
 }
 .titulo {
-  padding-top: 8%;
-}
-.pesquisa {
-  height: 40px;
-  align-items: center;
+  padding-top: 4%;
+  padding-bottom: 4%;
+
 }
 .dataFim {
   padding-right: 225px;
@@ -25,7 +23,7 @@
 }
 
 .headerImg {
-  height: 60px;
+  height: 100%;
   margin-top: 10px;
   float: left;
 }
@@ -47,13 +45,10 @@
 .formCadastroCurso {
   justify-content: center;
 }
-.table {
-  margin-top: 8%;
-}
-
+/* 
 @media only screen and (min-width: 1081px) {
   .bodyPag {
-    height: 868px;
+    height: 400px;
   }
 }
 
@@ -61,4 +56,4 @@
   .bodyPag {
     height: 868px;
   }
-}
+} */

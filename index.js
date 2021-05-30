@@ -1,51 +1,56 @@
-$(function () {
-  $("#dateStart, #dateEnd").datepicker({
-    // showOn: "both",
-    // changeYear: true,
-    // yearRange: "2021:2121",
-    dateFormat: "dd/mm/yy",
-    monthNames: [
-      "Janeiro",
-      "Fevereiro",
-      "Março",
-      "Abril",
-      "Maio",
-      "Junho",
-      "Julho",
-      "Agosto",
-      "Setembro",
-      "Outubro",
-      "Novembro",
-      "Dezembro",
-    ],
-    // buttonImageOnly: true,
-    // buttonImage: "img/calendar3.svg",
-  });
-});
+function recuperaDados() {
+  return localStorage.getItem("cursos");
+}
 
-// $("form").submit(function () {
-//   $(this)[0].reset();
-// })
+function transformaJson() {
+  return JSON.parse(recuperaDados());
+}
 
-itemsTable();
+function carregaCursos() {
+  if (recuperaDados() != null) {
+    itemsTable(transformaJson());
+  }
+}
 
-function carregaCursos(){
+let limparForms = document.querySelector('button');
+let inputs = document.querySelectorAll('.campoForms');
 
-  let cursoString = localStorage.getItem("curso");
-  let cursoObj = JSON.parse(cursoString || []);
-  itemsTable(cursoObj);
-  console.log(cursoObj);
-  console.log(localStorage);
+limparForms.addEventListener('click', () => {
+  inputs.forEach(input => input.value='')
+  
+})
+
+function cadastrarCurso() {
+  if (validationInput(inputs) == true){  
+    let curso = dadosCurso();
+
+  if (recuperaDados() == null) {
+    localStorage.setItem("cursos", "[]");
+  }
+
+  let acrescentaCurso = transformaJson();
+  acrescentaCurso.push(curso);
+  
+  localStorage.setItem("cursos", JSON.stringify(acrescentaCurso));
+    $('modal').modal('hide');
+  }else{
+    console.log(error);
+  }
 
 }
 
-function cadastrarCurso() {
-  let curso = dadosCurso();
-
-  localStorage.setItem("curso", JSON.stringify(curso));
-
-  itemsTable(cursoObj)
-  
+function validationInput(inputs){
+  var resutado = true;
+  for(var i = 0; i < inputs.length; i++){
+      if (inputs[i].hasAttribute('required') ){
+        if (inputs[i].value == ""){
+          inputs[i].style.borderColor = "Red";
+          inputs[i].placeholder = "Campo obrigatório !"
+          resutado = false;
+        }
+      }
+    }
+  return resutado;
 }
 
 function dadosCurso() {
@@ -62,30 +67,32 @@ function dadosCurso() {
     dataTermino: dataTermino,
     descricao: descricao,
   };
-
   return dados;
 }
 
-function itemsTable(value) {
-  try {
-    const tableBody = document.querySelector(".bodyTable");
-    const tableRow = document.createElement("tr");
-    const tableHeader = document.createElement("th");
-    const tableData = document.createElement("td");
-    const tableData1 = document.createElement("td");
-    const tableData2 = document.createElement("td");
+function itemsTable(values) {
+  console.log(values);
+  values.forEach((curso) => {
+    try {
+      const tableBody = document.querySelector(".bodyTable");
+      const tableRow = document.createElement("tr");
+      const tableHeader = document.createElement("th");
+      const tableData = document.createElement("td");
+      const tableData1 = document.createElement("td");
+      const tableData2 = document.createElement("td");
 
-    tableHeader.innerHTML = value.nomeCurso;
-    tableData.innerHTML = value.duracao;
-    tableData1.innerHTML = value.dataInicio;
-    tableData2.innerHTML = value.dataTermino;
+      tableHeader.innerHTML = curso.nomeCurso;
+      tableData.innerHTML = curso.duracao;
+      tableData1.innerHTML = curso.dataInicio;
+      tableData2.innerHTML = curso.dataTermino;
 
-    tableBody.appendChild(tableRow);
-    tableRow.appendChild(tableHeader);
-    tableRow.appendChild(tableData);
-    tableRow.appendChild(tableData1);
-    tableRow.appendChild(tableData2);
-  } catch (error) {
-    console.log(error);
-  }
+      tableBody.appendChild(tableRow);
+      tableRow.appendChild(tableHeader);
+      tableRow.appendChild(tableData);
+      tableRow.appendChild(tableData1);
+      tableRow.appendChild(tableData2);
+    } catch (error) {
+      console.log(error);
+    }
+  });
 }
