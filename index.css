@@ -12,9 +12,7 @@
   padding-bottom: 4%;
 
 }
-.dataFim {
-  padding-right: 225px;
-}
+
 
 .headerPag {
   width: 100%;
@@ -22,11 +20,6 @@
   background-color: #dddbed;
 }
 
-.headerImg {
-  height: 100%;
-  margin-top: 10px;
-  float: left;
-}
 .btn {
   background-color: #b9b5e1;
   color: #474a51;
@@ -45,15 +38,29 @@
 .formCadastroCurso {
   justify-content: center;
 }
-/* 
-@media only screen and (min-width: 1081px) {
-  .bodyPag {
+
+@media only screen and (max-width: 350px) {
+  .dataFim {
+    margin-right: 164px;
+  }
+  .headerImg {
     height: 400px;
+    margin-top: 25px;
+    float: left;
   }
 }
 
-@media only screen and (max-width: 1081px) {
-  .bodyPag {
-    height: 868px;
+
+
+@media only screen and (min-width: 1080px) {
+  .dataFim {
+    margin-right: 210px;
   }
-} */
+
+  .headerImg {
+    height: 58px;
+    margin-top: 10px;
+    float: left;
+    left: 40%;
+  }
+}
